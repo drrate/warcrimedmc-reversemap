@@ -22,6 +22,8 @@ http {
 			proxy_pass <%= ENV["OTHER_STREAM"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
+			sub_filter '<a href="/landing' '<a href="/';
+    			sub_filter_once off;
 		}
 
 		if ($http_x_forwarded_proto != "https") {
