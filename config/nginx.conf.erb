@@ -12,12 +12,6 @@ http {
 	server {
 		listen <%= ENV["PORT"] %>;
 
-		location /landing {
-			proxy_pass <%= ENV["OTHER_STREAM"] %>;
-			proxy_http_version 1.1;
-			proxy_buffering off;
-		}
-
 		location / {
 			proxy_pass <%= ENV["UPSTREAM_SERVER"] %>;
 			proxy_http_version 1.1;
