@@ -18,12 +18,6 @@ http {
 			proxy_buffering off;
 		}
 
-		location /landing_page {
-			proxy_pass <%= ENV["OTHER_STREAM"] %>;
-			proxy_http_version 1.1;
-			proxy_buffering off;
-		}
-
 		if ($http_x_forwarded_proto != "https") {
 			rewrite ^(.*)$ https://$host$1 permanent;
 		}
