@@ -19,16 +19,13 @@ http {
 		}
 
 		location ^~ /landing {
-			rewrite /landing/(.*) /$1 break;
-                        proxy_redirect <%= ENV["OTHER_STREAM"] %>;;
+                        proxy_redirect off;
                         add_header Pragma "no-cache";
                         add_header Cache-Control "no-cache";
+			proxy_pass <%= ENV["OTHER_STREAM"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
 		}
 
-		if ($http_x_forwarded_proto != "https") {
-			rewrite ^(.*)$ https://$host$1 permanent;
-		}
 	}
 }
