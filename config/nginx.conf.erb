@@ -20,7 +20,7 @@ http {
 
 		location ^~ /landing {
 			rewrite /landing/(.*) /$1 break;
-                        proxy_redirect    off;
+                        proxy_redirect on;
                         add_header Pragma "no-cache";
                         add_header Cache-Control "no-cache";
 			proxy_pass <%= ENV["OTHER_STREAM"] %>;
