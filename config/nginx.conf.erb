@@ -18,7 +18,8 @@ http {
 			proxy_buffering off;
 		}
 
-		location /landing {
+		location ^~ /landing {
+			rewrite /landing/(.*) /$1 break;
                         proxy_redirect    off;
                         add_header Pragma "no-cache";
                         add_header Cache-Control "no-cache";
