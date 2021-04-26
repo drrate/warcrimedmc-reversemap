@@ -1,0 +1,40 @@
+worker_processes  2;
+error_log /dev/stdout info;
+
+daemon off;
+
+events {
+	worker_connections 256;
+}
+
+http {
+	access_log /dev/stdout;
+	server {
+		listen <%= ENV["PORT"] %>;
+
+		location / {
+			proxy_pass <%= ENV["UPSTREAM_SERVER"] %>;
+			proxy_http_version 1.1;
+			proxy_buffering off;
+		}
+
+		location /landing {
+			proxy_set_header X-Forwarded-Host $host:$server_port;
+			proxy_set_header X-Forwarded-Server $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_pass <%= ENV["OTHER_STREAM"] %>;
+			proxy_http_version 1.1;
+			proxy_buffering off;
+		}
+
+		location /_next {
+			proxy_set_header X-Forwarded-Host $host:$server_port;
+			proxy_set_header X-Forwarded-Server $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_pass <%= ENV["OTHER_STREAM"] %>/_next/;
+			proxy_http_version 1.1;
+			proxy_buffering off;
+		}
+
+	}
+}
