@@ -25,7 +25,7 @@ http {
 			proxy_pass <%= ENV["OTHER_STREAM"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
-			try_files $uri $uri/ <%= ENV["OTHER_STREAM"] %>/$uri;
+			try_files $uri $uri/ <%= ENV["OTHER_STREAM"] %>;
 		}
 
 		location /_next {
