@@ -1,6 +1,7 @@
 worker_processes  2;
 error_log /dev/stdout info;
-
+proxy_cache_path ./tempf levels=1:2 keys_zone=wcmcr:10m max_size=20g
+                 inactive=240m use_temp_path=on;
 daemon off;
 
 events {
@@ -46,5 +47,3 @@ http {
 }
 
 	}
-proxy_cache_path ./tempf levels=1:2 keys_zone=wcmcr:10m max_size=20g
-                 inactive=240m use_temp_path=on;
