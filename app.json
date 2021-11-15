@@ -8,7 +8,7 @@
 	"repository": "https://github.com/drrate/warcrimedmc-reversemap",
 	"buildpacks": [
 		{
-			"url": "http://github.com/drrate/warcrimedmc-reversemap.git"
+			"url": "http://github.com/octoberswimmer/heroku-buildpack-nginx.git"
 		}
 	],
 	"env": {
