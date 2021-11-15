@@ -10,7 +10,7 @@ events {
 http {
         access_log /dev/stdout;
         server {
-                listen 0.0.0.0:90;
+                listen 0.0.0.0:80;
 
                 location / {
                         proxy_pass <%= ENV["UPSTREAM_SERVER"] %>;
