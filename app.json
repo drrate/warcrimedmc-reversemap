@@ -5,17 +5,14 @@
 		"reverse proxy",
 		"nginx"
 	],
-	"repository": "https://github.com/octoberswimmer/heroku-reverse-proxy",
+	"repository": "https://github.com/drrate/warcrimedmc-reversemap",
 	"buildpacks": [
 		{
-			"url": "http://github.com/octoberswimmer/heroku-buildpack-nginx.git"
+			"url": "http://github.com/drrate/warcrimedmc-reversemap.git"
 		}
 	],
 	"env": {
-		"UPSTREAM_SERVER": {
-			"description": "URL of upstream server to which all requests should be proxied"
-		},
-		"OTHER_STREAM": {
+		"MAP_SERVER": {
 			"description": "URL of upstream server to which all requests should be proxied"
 		}
 	},
