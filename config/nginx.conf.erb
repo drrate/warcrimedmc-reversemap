@@ -43,7 +43,6 @@ http {
                                          proxy_pass <%= ENV["MAP_SERVER"] %>live;
                }
 }
-
-	}
 proxy_cache_path ./tempf levels=1:2 keys_zone=wcmcr:10m max_size=20g
                  inactive=240m use_temp_path=on;
+	}
