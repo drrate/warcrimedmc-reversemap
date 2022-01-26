@@ -7,6 +7,7 @@ events {
 }
 
 http {
+        real_ip_header CF-Connecting-IP; 
         access_log /dev/stdout;
         server {
                 listen <%= ENV["PORT"] %>;
